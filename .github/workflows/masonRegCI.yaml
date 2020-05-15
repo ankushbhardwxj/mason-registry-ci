@@ -12,7 +12,9 @@ jobs:
     name: Check TOML Files
     runs-on: ubuntu-latest
     steps:
-      -name: Run check toml file script
-       run: echo "Testing this out"
+      - name: Run check toml file script
+        shell: bash 
+        run: |
+          echo "Testing this out"
 
 
