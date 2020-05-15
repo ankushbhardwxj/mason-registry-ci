@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -name: Run check toml file script
-       run: bash checkTomls.bash
+       run: echo "Testing this out"
 
 
