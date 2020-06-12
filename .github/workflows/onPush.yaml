@@ -12,5 +12,7 @@ jobs:
         with:
           fetch-depth: 4
       - name: Print github_token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "${{ secret.github_token }}"
+          echo "$GITHUB_TOKEN"
