@@ -1,14 +1,17 @@
 name: Mason Search Ranking Script
 on:
   pull_request:
-    types: [closed]
+    types:
+      - closed
+      - opened
+      - synchronize
 
 jobs:
   run_script_on_merge:
     name: Run search script
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Run script on PR merge
         if: github.event.pull_request.merged == true
         run: |
