@@ -8,6 +8,7 @@ jobs:
     name: Run search script
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Run script on PR merge
         if: github.event.pull_request.merged == true
         run: |
