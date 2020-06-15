@@ -10,7 +10,5 @@ jobs:
     steps:
       - name: Run check toml file script
         shell: bash 
-        run: |
-          echo "Testing this out"
-
+        uses: ./checkTomls.bash
 
