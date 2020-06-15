@@ -9,6 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run check toml file script
-        shell: bash 
         uses: ./checkTomls.bash
 
