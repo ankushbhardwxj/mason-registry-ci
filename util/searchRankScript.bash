@@ -38,7 +38,19 @@ fi
 [[ -d "$testDir" ]] && score=$((score+1)) && echo "test dir found"
 [[ -d "$exampleDir" ]] && score=$((score+1)) && echo "example dir found"
 [[ -d "$srcDir" ]] && score=$((score+1)) && echo "src dir found"
+# points for number of examples 
+countForExamples=`ls -l ./example/*.chpl 2>/dev/null | wc -l`
+score=$((score+countForExamples))
+# points for number of tests
+countForTests=`ls -l ./test/*.chpl 2>/dev/null | wc -l`
+score=$((score+countForTests))
 echo "$score"
+# verify Mason.toml fields for score
+
+# git tag versioning format 
+
+# look for namespace collisions
+
 # append package score to TOML cache file
 cd ../../../
 echo "$name=$score" >> cache.toml
