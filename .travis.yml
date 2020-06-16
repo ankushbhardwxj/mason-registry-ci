@@ -1,10 +1,16 @@
 os:
-   - linux
+  - linux
+
 matrix:
-   include:
-     - name: "checkTomls"
-       env: TEST_COMMAND="./checkTomls.bash"
+  include:
+    - name: "checkTomls"
+      env: TEST_COMMAND="./checkTomls.bash"
+
+    - name: "travisScript"
+      env: TEST_COMMAND="./util/travisScript.bash"
+
+    - name: "searchRankScript"
+      env: TEST_COMMAND="./util/searchRankScript.bash"
 
 script:
-   - (eval "$TEST_COMMAND")
-
+  - (eval "$TEST_COMMAND")

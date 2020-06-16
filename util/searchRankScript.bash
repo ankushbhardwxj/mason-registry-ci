@@ -1,0 +1,43 @@
+# Clone the package to be published from latest commit
+package=$(git diff --name-only HEAD HEAD~1)
+end=".end"
+path="$package$end"
+cd $(dirname $path)
+FILE=$package
+basename "$FILE"
+f="$(basename -- $FILE)"
+source="$(grep source "$f"| cut -d= -f2)"
+fixed=$(echo "$source" | tr -d '"')
+git clone $fixed newPackage
+cd newPackage
+# Perform a series of check on the package and award points
+mason=./Mason.toml
+testDir=./test/
+exampleDir=./example/
+srcDir=./src/
+score=0
+countForREADME=`ls -l ./README.* 2>/dev/null | wc -l`
+if [ $countForREADME != 0 ]
+then
+  echo "README found"
+  score=$((score+1))
+fi
+countForModuleFile=`ls -l ./src/*.chpl 2>/dev/null | wc -l`
+if [ $countForModuleFile != 0 ]
+then
+  echo "ModuleFile found"
+  score=$((score+1))
+fi
+[[ -f "$mason" ]] && score=$((score+1)) && echo "Mason.toml found"
+[[ -d "$testDir" ]] && score=$((score+1)) && echo "test dir found"
+[[ -d "$exampleDir" ]] && score=$((score+1)) && echo "example dir found"
+[[ -d "$srcDir" ]] && score=$((score+1)) && echo "src dir found"
+echo "$score"
+# append package score to TOML cache file
+cd ../../../
+echo "$f=$score" >> cache.toml
+# setup git and ready to push
+git add cache.toml
+git commit -m "added $f to cache"
+git push -u origin master
+
