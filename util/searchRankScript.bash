@@ -8,6 +8,7 @@ basename "$FILE"
 f="$(basename -- $FILE)"
 source="$(grep source "$f"| cut -d= -f2)"
 fixed=$(echo "$source" | tr -d '"')
+name="$(grep name "$f" | cut -d= -f2 | tr -d '"' | tr -d ' ')"
 git clone $fixed newPackage
 cd newPackage
 # Perform a series of check on the package and award points
@@ -35,7 +36,8 @@ fi
 echo "$score"
 # append package score to TOML cache file
 cd ../../../
-echo "$f=$score" >> cache.toml
+echo "\n$name=$score" >> cache.toml
+cat cache.toml
 # setup git and ready to push
 git add cache.toml
 git commit -m "added $f to cache"
