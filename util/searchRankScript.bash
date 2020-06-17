@@ -36,7 +36,8 @@ fi
 echo "$score"
 # append package score to TOML cache file
 cd ../../../
-echo "\n$name=$score" >> cache.toml
+echo "$name=$score" >> cache.toml
+echo "" >> cache.toml
 echo "Wrote $name=$score to cache.toml"
 cat cache.toml
 # setup git and ready to push
