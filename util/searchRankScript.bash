@@ -37,9 +37,10 @@ echo "$score"
 # append package score to TOML cache file
 cd ../../../
 echo "\n$name=$score" >> cache.toml
+echo "Wrote $name=$score to cache.toml"
 cat cache.toml
 # setup git and ready to push
 git add cache.toml
-git commit -m "added $f to cache"
-git push -u origin master
+git commit -m "added $name to cache"
+# git push using chapel authorization to the repo
 
