@@ -1,6 +1,11 @@
 # Clone the package to be published from latest commit
 package=$(git diff --name-only HEAD HEAD~1)
 end=".end"
+# check for TOML file
+if [[ $package != *".toml"* ]]; then
+  echo "Not TOML FILE"
+  exit 1
+fi
 path="$package$end"
 cd $(dirname $path)
 FILE=$package
