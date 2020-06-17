@@ -4,7 +4,7 @@ end=".end"
 # check for TOML file
 if [[ $package != *".toml"* ]]; then
   echo "Not TOML FILE"
-  exit 1
+  exit 0
 fi
 path="$package$end"
 cd $(dirname $path)
