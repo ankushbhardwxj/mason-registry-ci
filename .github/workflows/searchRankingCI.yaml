@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 4
       - name: Run script on PR merge
         if: github.event.pull_request.merged == true
         run: |
