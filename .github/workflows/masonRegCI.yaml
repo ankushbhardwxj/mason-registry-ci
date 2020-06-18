@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run checkTomlScript
         run: |
-          sh ./checkTomls.bash
+          bash ./checkTomls.bash
 
 
