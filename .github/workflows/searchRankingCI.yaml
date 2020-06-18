@@ -1,5 +1,7 @@
 name: Mason Search Ranking Script
-on: push
+on:
+  pull_request:
+    types: [closed]
 
 jobs:
   run_script_on_merge:
@@ -7,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run script on PR merge
-        if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
+        if: github.event.pull_request.merged == true
         run: |
           bash ./util/searchRankScript.bash
