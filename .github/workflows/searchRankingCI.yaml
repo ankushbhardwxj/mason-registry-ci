@@ -18,5 +18,7 @@ jobs:
         if: github.event.pull_request.merged == true
         env: 
           PASSWORD: ${{ secrets.PASSWORD }}
+          USERNAME: ${{ secrets.USERNAME }}
         run: |
+          echo "$env:USERNAME"
           bash ./util/searchRankScript.bash
