@@ -18,7 +18,7 @@ jobs:
         if: github.event.pull_request.merged == true
         run: |
           bash ./util/searchRankScript.bash
-       - name: Push changes
-         uses: ad-m/github-push-action@master
-         with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
