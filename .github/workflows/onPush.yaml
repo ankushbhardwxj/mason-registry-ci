@@ -1,0 +1,16 @@
+name: Does push work
+on: 
+  push: 
+    branch:
+      - master
+jobs:
+  run_on_push:
+    name: Run on push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 4
+      - name: Print github_token
+        run: |
+          echo "${{ secret.github_token }}"
