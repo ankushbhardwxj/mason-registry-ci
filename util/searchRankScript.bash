@@ -45,12 +45,6 @@ score=$((score+countForExamples))
 countForTests=`ls -l ./test/*.chpl 2>/dev/null | wc -l`
 score=$((score+countForTests))
 echo "$score"
-# verify Mason.toml fields for score
-
-# git tag versioning format 
-
-# look for namespace collisions
-
 # append package score to TOML cache file
 cd ../../../
 echo "$name=$score" >> cache.toml
@@ -58,7 +52,10 @@ echo "" >> cache.toml
 echo "Wrote $name=$score to cache.toml"
 cat cache.toml
 # setup git and ready to push
+git config --global user.name "$USERNAME"
+git config --global user.email ankush.bhardwaj0@gmail.com
 git add cache.toml
 git commit -m "added $name to cache"
+git push https://"$USERNAME":"$PASSWORD"@mason-registry-ci.git
 # git push using chapel authorization to the repo
 
