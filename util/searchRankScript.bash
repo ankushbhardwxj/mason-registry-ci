@@ -56,6 +56,6 @@ git config --global user.name "ankingcodes"
 git config --global user.email "ankush.bhardwaj0@gmail.com"
 git add cache.toml
 git commit -m "added $name to cache"
-git push https://ankingcodes:"$PASSWORD"@github.com/ankingcodes/mason-registry-ci.git
+#git push https://ankingcodes:"$PASSWORD"@github.com/ankingcodes/mason-registry-ci.git
 # git push using chapel authorization to the repo
 
