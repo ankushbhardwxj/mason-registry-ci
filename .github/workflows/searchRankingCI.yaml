@@ -16,8 +16,7 @@ jobs:
           fetch-depth: 4
       - name: Run script on PR merge
         if: github.event.pull_request.merged == true
-        with:
-          USERNAME: ${{ secrets.USERNAME }}
+        env: 
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           bash ./util/searchRankScript.bash
