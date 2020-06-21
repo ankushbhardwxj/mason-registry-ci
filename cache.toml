@@ -1,6 +1,2 @@
 [packages]
 
-NumpyLike=5
-
-GPUIterator=9
-

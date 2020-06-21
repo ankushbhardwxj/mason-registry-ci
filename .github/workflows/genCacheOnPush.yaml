@@ -1,20 +1,22 @@
-name: Does push work
+name: Generate Rank on Cache
 on: 
   push: 
     branch:
       - master
+    path:
+      - 'Bricks/**'
 jobs:
   run_on_push:
-    name: Run on push
+    name: Append Rank to Cache
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 4
-      - name: Run script
+      - name: Run script to rank packages
         run: |
           bash ./util/searchRankScript.bash
-      - name: push changes
+      - name: Append rank to Cache
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
