@@ -5,6 +5,9 @@ on:
       - master
     path:
       - 'Bricks/**'
+    paths-ignore:
+      - '.github/**'
+      - 'util/**'
 jobs:
   run_on_push:
     name: Append Rank to Cache
