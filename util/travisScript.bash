@@ -56,3 +56,4 @@ mason update
 
 mason publish --ci-check
 exit $?
+
