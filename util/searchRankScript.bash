@@ -48,7 +48,7 @@ score=$((score+countForTests))
 echo "$score"
 # append package score to TOML cache file
 cd ../../../
-echo "[$name."$version"]" >> cache.toml
+echo "[$name.\"$version\"]" >> cache.toml
 echo "score = $score" >> cache.toml
 echo "Wrote $name=$score to cache.toml"
 cat cache.toml
