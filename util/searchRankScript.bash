@@ -14,6 +14,7 @@ f="$(basename -- $FILE)"
 source="$(grep source "$f"| cut -d= -f2)"
 fixed=$(echo "$source" | tr -d '"')
 name="$(grep name "$f" | cut -d= -f2 | tr -d '"' | tr -d ' ')"
+version="$(grep version "$f" | cit -d= -f2 | tr -d '"' | tr -d ' ')"
 git clone $fixed newPackage
 cd newPackage
 # Perform a series of check on the package and award points
@@ -47,7 +48,8 @@ score=$((score+countForTests))
 echo "$score"
 # append package score to TOML cache file
 cd ../../../
-echo "$name=$score" >> cache.toml
+echo "[$name."$version"]" >> cache.toml
+echo "score = $score" >> cache.toml
 echo "Wrote $name=$score to cache.toml"
 cat cache.toml
 # setup git and ready to push
