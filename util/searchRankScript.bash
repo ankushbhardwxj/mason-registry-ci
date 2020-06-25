@@ -14,7 +14,7 @@ f="$(basename -- $FILE)"
 source="$(grep source "$f"| cut -d= -f2)"
 fixed=$(echo "$source" | tr -d '"')
 name="$(grep name "$f" | cut -d= -f2 | tr -d '"' | tr -d ' ')"
-version="$(grep version "$f" | cit -d= -f2 | tr -d '"' | tr -d ' ')"
+version="$(grep version "$f" | cut -d= -f2 | tr -d '"' | tr -d ' ')"
 git clone $fixed newPackage
 cd newPackage
 # Perform a series of check on the package and award points
