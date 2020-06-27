@@ -52,6 +52,8 @@ countForTests=$(ls -l ./test/*.chpl 2>/dev/null | wc -l)
 score=$((score+countForTests))
 echo "$score"
 
+cd ../../../ || exit 1
+
 # check if package name and version already exists 
 if grep "$name.\"$version\"" cache.toml
 then 
@@ -60,7 +62,6 @@ then
 fi
 
 # append package score to TOML cache file
-cd ../../../ || exit 1
 echo "[$name.\"$version\"]" >> cache.toml
 echo "score = $score" >> cache.toml
 echo "Wrote $name=$score to cache.toml"
