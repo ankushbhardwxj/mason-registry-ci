@@ -57,8 +57,6 @@ if grep "$name.\"$version\"" cache.toml
 then 
   echo "Package already exists. Cannot overwrite."
   exit 1
-else
-  exit 0
 fi
 
 # append package score to TOML cache file
