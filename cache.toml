@@ -1,5 +1,8 @@
-[UUID."0.1.0"]
-score = 4
 [LocalAtomics."1.0.2"]
 score = 5
 
+[NumpyLike."0.1.0"]
+score = 5
+
+[UUID."0.1.0"]
+score = 4
